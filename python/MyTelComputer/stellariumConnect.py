@@ -29,7 +29,7 @@ class stellariumConnect(object):
                     self.connected = True
                     break
         except Exception:
-            print "Failed handshake with Stellarium: %s" % (Exception.message)
+            print ("Failed handshake with Stellarium: %s" % (Exception.message))
             
         
     def sendStellariumCoords(self,Ra,Dec):
@@ -40,8 +40,11 @@ class stellariumConnect(object):
     def receiveStellariumCoords(self,timeout):
         incomingData = self.receiveStellariumData(timeout)
         if incomingData != None:
+            print("Incoming data: %s" % incomingData)
             data = struct.unpack("3iIi", incomingData)
+            print("Unpacked data: [%s][%s]" % (data[3], data[4]))
             [Ra,Dec] = self.stellariumToAngle(data[3], data[4])
+            
             return [Ra,Dec]
         else:
             return [False,False]
@@ -53,15 +56,15 @@ class stellariumConnect(object):
             if ready[0]:
                 incomingData = self.connection.recv(640)
             return incomingData
-        except Exception, e:
-            print "failed to receive light data from Stellarium: %s" % e
+        except e:
+            print ("failed to receive light data from Stellarium: %s" % e)
             
     def sendStellariumData(self,data):
         try:
             for i in range(10):##Stellarium likes to recieve the coordinates 10 times.
                 self.connection.send(data)
-        except Exception, e:
-            print "failed to send data to Stellarium: %s" % e
+        except e:
+            print ("failed to send data to Stellarium: %s" % e)
             
     def angleToStellarium(self,Ra,Dec):
         return [int(Ra.h*(2147483648/12.0)), int(Dec.d*(1073741824/90.0))]
