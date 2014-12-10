@@ -16,8 +16,9 @@ class stellariumConnect(object):
             while True:
                 self.connection, self.clientAddress = self.sock.accept()
                 if self.connection != None:
+                    print ("Connected!!")
                     self.connected = True
                     break
         except Exception:
-            print "Failed handshake with Stellarium: %s" % (Exception.message)
+            print ("Failed handshake with Stellarium: %s" % (Exception.message))
 
