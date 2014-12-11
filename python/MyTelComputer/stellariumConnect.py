@@ -34,15 +34,17 @@ class stellariumConnect(object):
         
     def sendStellariumCoords(self,Ra,Dec):
         [RaInt,DecInt] = self.angleToStellarium(Ra, Dec)
-        data = struct.pack("3iIii", 24, 0, time.time(), RaInt, DecInt, 0)##//TODO time reported here does not include the offset (if any). This may not be an issue but you should check. 
+        print("Send data: RA[%d] DEC[%d]", (RaInt,DecInt))
+        data = struct.pack("3iIi", 20, 0, int(time.time()), RaInt, DecInt)##//TODO time reported here does not include the offset (if any). This may not be an issue but you should check. 
         self.sendStellariumData(data)
     
     def receiveStellariumCoords(self,timeout):
         incomingData = self.receiveStellariumData(timeout)
-        if incomingData != None:
-            print("Incoming data: %s" % incomingData)
+        if (incomingData != None) and (len(incomingData) != 0):
+        #if (len(incomingData) != 0):
+            print ("Incoming data[%d]: ", (len(incomingData),incomingData))
             data = struct.unpack("3iIi", incomingData)
-            print("Unpacked data: [%s][%s]" % (data[3], data[4]))
+            print("Unpacked data: Length:%d Type:%d Time:%d RA: %d Dec: %d" % (data[0], data[1], data[2], data[3], data[4]))
             [Ra,Dec] = self.stellariumToAngle(data[3], data[4])
             
             return [Ra,Dec]
@@ -61,8 +63,10 @@ class stellariumConnect(object):
             
     def sendStellariumData(self,data):
         try:
+            print("Sending data...")
             for i in range(10):##Stellarium likes to recieve the coordinates 10 times.
                 self.connection.send(data)
+            print("Data send complete")
         except e:
             print ("failed to send data to Stellarium: %s" % e)
             

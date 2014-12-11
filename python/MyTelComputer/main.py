@@ -1,6 +1,6 @@
 import stellariumConnect as stellariumConnect
 from blueClient import blueClient
-import threading
+import threading, time
 #from configParser import configParser
 
 class stellariumReceive(threading.Thread):
@@ -21,7 +21,10 @@ class stellariumReceive(threading.Thread):
                 if targ[0]!= False:
                     self.newTarget(targ)
                     self.getTargetString()
-                    
+                    #self.stelCom.sendStellariumCoords(targ[0],targ[1])
+                #else:
+                #    print ("No coordinates received")
+                #    sleep(1)
                 
         except IOError as e:
             print ("Error in receiving coordinates from Stellarium: %s" % e.message)
@@ -47,12 +50,12 @@ if __name__ == '__main__':
     port = 10002
     #while(True):
     print ("** Here we go...")
-    #theClient = blueClient()
+    theClient = sockClient()
     stelCom = stellariumConnect.stellariumConnect(host, port)
     stelCom.handshakeStellarium()
-    #theClient.stellariumMode(stelCom)
-    stelReceiver = stellariumReceive(stelCom)
-    stelReceiver.start()
+    theClient.stellariumMode(stelCom)
+    #stelReceiver = stellariumReceive(stelCom)
+    #stelReceiver.start()
     try:
         while(True):
             sleep(1)
