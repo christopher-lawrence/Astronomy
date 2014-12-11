@@ -136,14 +136,14 @@ class blueServer(object):
         data = self.clientSock.recv(1024)
         cfgData = str.split(data,':')
         cfgParser.setGeneric(cfgData[0],cfgData[1],cfgData[2])
-        setTme.setTimeFromConfig(cfgParser)
+        #setTme.setTimeFromConfig(cfgParser)
         self.clientSock.send("configReceived")
         
     def receiveTime(self,setTme):
         self.clientSock.send("receivingTime")
         data = self.clientSock.recv(1024)
         try:
-            setTme.setSystemTime(data)
+            #setTme.setSystemTime(data)
         except Exception as e:
             #screenPrinter().printToScreen("Time set fail\ncheck log")
             print("Time set fail\ncheck log")
