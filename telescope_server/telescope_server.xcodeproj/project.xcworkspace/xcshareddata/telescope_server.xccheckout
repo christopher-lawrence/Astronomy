@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>IDESourceControlProjectFavoriteDictionaryKey</key>
+	<false/>
+	<key>IDESourceControlProjectIdentifier</key>
+	<string>100CA6B0-9C37-477D-B3B7-E45240F3D460</string>
+	<key>IDESourceControlProjectName</key>
+	<string>telescope_server</string>
+	<key>IDESourceControlProjectOriginsDictionary</key>
+	<dict>
+		<key>80E4FBF7CC877B558D29B2822CCAE652AE0AA832</key>
+		<string>https://github.com/wyle-e-coyote/Astronomy.git</string>
+	</dict>
+	<key>IDESourceControlProjectPath</key>
+	<string>telescope_server/telescope_server.xcodeproj</string>
+	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
+	<dict>
+		<key>80E4FBF7CC877B558D29B2822CCAE652AE0AA832</key>
+		<string>../../..</string>
+	</dict>
+	<key>IDESourceControlProjectURL</key>
+	<string>https://github.com/wyle-e-coyote/Astronomy.git</string>
+	<key>IDESourceControlProjectVersion</key>
+	<integer>111</integer>
+	<key>IDESourceControlProjectWCCIdentifier</key>
+	<string>80E4FBF7CC877B558D29B2822CCAE652AE0AA832</string>
+	<key>IDESourceControlProjectWCConfigurations</key>
+	<array>
+		<dict>
+			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
+			<string>public.vcs.git</string>
+			<key>IDESourceControlWCCIdentifierKey</key>
+			<string>80E4FBF7CC877B558D29B2822CCAE652AE0AA832</string>
+			<key>IDESourceControlWCCName</key>
+			<string>Astronomy</string>
+		</dict>
+	</array>
+</dict>
+</plist>

@@ -50,12 +50,12 @@ if __name__ == '__main__':
     port = 10002
     #while(True):
     print ("** Here we go...")
-    theClient = sockClient()
+    #theClient = sockClient()
     stelCom = stellariumConnect.stellariumConnect(host, port)
     stelCom.handshakeStellarium()
-    theClient.stellariumMode(stelCom)
-    #stelReceiver = stellariumReceive(stelCom)
-    #stelReceiver.start()
+    #theClient.stellariumMode(stelCom)
+    stelReceiver = stellariumReceive(stelCom)
+    stelReceiver.start()
     try:
         while(True):
             sleep(1)

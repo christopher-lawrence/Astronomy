@@ -1,0 +1,469 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 42;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		C9056E5E0AAF742D005E7316 /* Connection.cpp in Sources */ = {isa = PBXBuildFile; fileRef = C9056E3B0AAF737C005E7316 /* Connection.cpp */; };
+		C9056E5F0AAF742E005E7316 /* Listener.cpp in Sources */ = {isa = PBXBuildFile; fileRef = C9056E410AAF737C005E7316 /* Listener.cpp */; };
+		C9056E600AAF742F005E7316 /* LogFile.cpp in Sources */ = {isa = PBXBuildFile; fileRef = C9056E430AAF737C005E7316 /* LogFile.cpp */; };
+		C9056E610AAF7430005E7316 /* MainDummy.cpp in Sources */ = {isa = PBXBuildFile; fileRef = C9056E490AAF737C005E7316 /* MainDummy.cpp */; };
+		C9056E620AAF7431005E7316 /* Server.cpp in Sources */ = {isa = PBXBuildFile; fileRef = C9056E4D0AAF737C005E7316 /* Server.cpp */; };
+		C9056E630AAF7431005E7316 /* ServerDummy.cpp in Sources */ = {isa = PBXBuildFile; fileRef = C9056E4F0AAF737C005E7316 /* ServerDummy.cpp */; };
+		C9056E640AAF7432005E7316 /* Socket.cpp in Sources */ = {isa = PBXBuildFile; fileRef = C9056E530AAF737C005E7316 /* Socket.cpp */; };
+		C9056E720AAF7505005E7316 /* Connection.cpp in Sources */ = {isa = PBXBuildFile; fileRef = C9056E3B0AAF737C005E7316 /* Connection.cpp */; };
+		C9056E730AAF7506005E7316 /* LogFile.cpp in Sources */ = {isa = PBXBuildFile; fileRef = C9056E430AAF737C005E7316 /* LogFile.cpp */; };
+		C9056E740AAF750F005E7316 /* Listener.cpp in Sources */ = {isa = PBXBuildFile; fileRef = C9056E410AAF737C005E7316 /* Listener.cpp */; };
+		C9056E750AAF7510005E7316 /* Lx200Connection.cpp in Sources */ = {isa = PBXBuildFile; fileRef = C9056E470AAF737C005E7316 /* Lx200Connection.cpp */; };
+		C9056E760AAF7510005E7316 /* Lx200Command.cpp in Sources */ = {isa = PBXBuildFile; fileRef = C9056E450AAF737C005E7316 /* Lx200Command.cpp */; };
+		C9056E770AAF7522005E7316 /* Socket.cpp in Sources */ = {isa = PBXBuildFile; fileRef = C9056E530AAF737C005E7316 /* Socket.cpp */; };
+		C9056E780AAF7524005E7316 /* ServerLx200.cpp in Sources */ = {isa = PBXBuildFile; fileRef = C9056E510AAF737C005E7316 /* ServerLx200.cpp */; };
+		C9056E790AAF7525005E7316 /* Server.cpp in Sources */ = {isa = PBXBuildFile; fileRef = C9056E4D0AAF737C005E7316 /* Server.cpp */; };
+		C9056E7A0AAF7525005E7316 /* SerialPort.cpp in Sources */ = {isa = PBXBuildFile; fileRef = C9056E4B0AAF737C005E7316 /* SerialPort.cpp */; };
+		C9056E7B0AAF7526005E7316 /* MainLx200.cpp in Sources */ = {isa = PBXBuildFile; fileRef = C9056E4A0AAF737C005E7316 /* MainLx200.cpp */; };
+		C9F2E3920AE92BEE00ADD8DE /* Connection.cpp in Sources */ = {isa = PBXBuildFile; fileRef = C9056E3B0AAF737C005E7316 /* Connection.cpp */; };
+		C9F2E3930AE92BEE00ADD8DE /* Listener.cpp in Sources */ = {isa = PBXBuildFile; fileRef = C9056E410AAF737C005E7316 /* Listener.cpp */; };
+		C9F2E3940AE92BEE00ADD8DE /* LogFile.cpp in Sources */ = {isa = PBXBuildFile; fileRef = C9056E430AAF737C005E7316 /* LogFile.cpp */; };
+		C9F2E3950AE92BEE00ADD8DE /* MainNexStar.cpp in Sources */ = {isa = PBXBuildFile; fileRef = C9F2E3830AE92B5600ADD8DE /* MainNexStar.cpp */; };
+		C9F2E3960AE92BEE00ADD8DE /* NexStarCommand.cpp in Sources */ = {isa = PBXBuildFile; fileRef = C9F2E3840AE92B5600ADD8DE /* NexStarCommand.cpp */; };
+		C9F2E3980AE92BEE00ADD8DE /* NexStarConnection.cpp in Sources */ = {isa = PBXBuildFile; fileRef = C9F2E3860AE92B5600ADD8DE /* NexStarConnection.cpp */; };
+		C9F2E39A0AE92BEE00ADD8DE /* SerialPort.cpp in Sources */ = {isa = PBXBuildFile; fileRef = C9056E4B0AAF737C005E7316 /* SerialPort.cpp */; };
+		C9F2E39B0AE92BFB00ADD8DE /* ServerNexStar.cpp in Sources */ = {isa = PBXBuildFile; fileRef = C9F2E3880AE92B5600ADD8DE /* ServerNexStar.cpp */; };
+		C9F2E39C0AE92C0000ADD8DE /* Socket.cpp in Sources */ = {isa = PBXBuildFile; fileRef = C9056E530AAF737C005E7316 /* Socket.cpp */; };
+		C9F2E39D0AE92C6C00ADD8DE /* Server.cpp in Sources */ = {isa = PBXBuildFile; fileRef = C9056E4D0AAF737C005E7316 /* Server.cpp */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		C9056E7F0AAF7586005E7316 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 08FB7793FE84155DC02AAC07 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = C9056E580AAF73E5005E7316;
+			remoteInfo = TelescopeServerDummy;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		C9056E370AAF731A005E7316 /* gpl.txt */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = text; name = gpl.txt; path = ./gpl.txt; sourceTree = SOURCE_ROOT; };
+		C9056E380AAF731A005E7316 /* lgpl.txt */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = text; name = lgpl.txt; path = ./lgpl.txt; sourceTree = SOURCE_ROOT; };
+		C9056E3B0AAF737C005E7316 /* Connection.cpp */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.cpp.cpp; name = Connection.cpp; path = ./src/Connection.cpp; sourceTree = SOURCE_ROOT; };
+		C9056E3C0AAF737C005E7316 /* Connection.hpp */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.cpp.h; name = Connection.hpp; path = ./src/Connection.hpp; sourceTree = SOURCE_ROOT; };
+		C9056E410AAF737C005E7316 /* Listener.cpp */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.cpp.cpp; name = Listener.cpp; path = ./src/Listener.cpp; sourceTree = SOURCE_ROOT; };
+		C9056E420AAF737C005E7316 /* Listener.hpp */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.cpp.h; name = Listener.hpp; path = ./src/Listener.hpp; sourceTree = SOURCE_ROOT; };
+		C9056E430AAF737C005E7316 /* LogFile.cpp */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.cpp.cpp; name = LogFile.cpp; path = ./src/LogFile.cpp; sourceTree = SOURCE_ROOT; };
+		C9056E440AAF737C005E7316 /* LogFile.hpp */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.cpp.h; name = LogFile.hpp; path = ./src/LogFile.hpp; sourceTree = SOURCE_ROOT; };
+		C9056E450AAF737C005E7316 /* Lx200Command.cpp */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.cpp.cpp; name = Lx200Command.cpp; path = ./src/Lx200Command.cpp; sourceTree = SOURCE_ROOT; };
+		C9056E460AAF737C005E7316 /* Lx200Command.hpp */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.cpp.h; name = Lx200Command.hpp; path = ./src/Lx200Command.hpp; sourceTree = SOURCE_ROOT; };
+		C9056E470AAF737C005E7316 /* Lx200Connection.cpp */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.cpp.cpp; name = Lx200Connection.cpp; path = ./src/Lx200Connection.cpp; sourceTree = SOURCE_ROOT; };
+		C9056E480AAF737C005E7316 /* Lx200Connection.hpp */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.cpp.h; name = Lx200Connection.hpp; path = ./src/Lx200Connection.hpp; sourceTree = SOURCE_ROOT; };
+		C9056E490AAF737C005E7316 /* MainDummy.cpp */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.cpp.cpp; name = MainDummy.cpp; path = ./src/MainDummy.cpp; sourceTree = SOURCE_ROOT; };
+		C9056E4A0AAF737C005E7316 /* MainLx200.cpp */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.cpp.cpp; name = MainLx200.cpp; path = ./src/MainLx200.cpp; sourceTree = SOURCE_ROOT; };
+		C9056E4B0AAF737C005E7316 /* SerialPort.cpp */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.cpp.cpp; name = SerialPort.cpp; path = ./src/SerialPort.cpp; sourceTree = SOURCE_ROOT; };
+		C9056E4C0AAF737C005E7316 /* SerialPort.hpp */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.cpp.h; name = SerialPort.hpp; path = ./src/SerialPort.hpp; sourceTree = SOURCE_ROOT; };
+		C9056E4D0AAF737C005E7316 /* Server.cpp */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.cpp.cpp; name = Server.cpp; path = ./src/Server.cpp; sourceTree = SOURCE_ROOT; };
+		C9056E4E0AAF737C005E7316 /* Server.hpp */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.cpp.h; name = Server.hpp; path = ./src/Server.hpp; sourceTree = SOURCE_ROOT; };
+		C9056E4F0AAF737C005E7316 /* ServerDummy.cpp */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.cpp.cpp; name = ServerDummy.cpp; path = ./src/ServerDummy.cpp; sourceTree = SOURCE_ROOT; };
+		C9056E500AAF737C005E7316 /* ServerDummy.hpp */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.cpp.h; name = ServerDummy.hpp; path = ./src/ServerDummy.hpp; sourceTree = SOURCE_ROOT; };
+		C9056E510AAF737C005E7316 /* ServerLx200.cpp */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.cpp.cpp; name = ServerLx200.cpp; path = ./src/ServerLx200.cpp; sourceTree = SOURCE_ROOT; };
+		C9056E520AAF737C005E7316 /* ServerLx200.hpp */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.cpp.h; name = ServerLx200.hpp; path = ./src/ServerLx200.hpp; sourceTree = SOURCE_ROOT; };
+		C9056E530AAF737C005E7316 /* Socket.cpp */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.cpp.cpp; name = Socket.cpp; path = ./src/Socket.cpp; sourceTree = SOURCE_ROOT; };
+		C9056E540AAF737C005E7316 /* Socket.hpp */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.cpp.h; name = Socket.hpp; path = ./src/Socket.hpp; sourceTree = SOURCE_ROOT; };
+		C9056E590AAF73E5005E7316 /* TelescopeServerDummy */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = TelescopeServerDummy; sourceTree = BUILT_PRODUCTS_DIR; };
+		C9056E6B0AAF74C3005E7316 /* TelescopeServerLx200 */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = TelescopeServerLx200; sourceTree = BUILT_PRODUCTS_DIR; };
+		C9F2E3830AE92B5600ADD8DE /* MainNexStar.cpp */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.cpp.cpp; name = MainNexStar.cpp; path = src/MainNexStar.cpp; sourceTree = "<group>"; };
+		C9F2E3840AE92B5600ADD8DE /* NexStarCommand.cpp */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.cpp.cpp; name = NexStarCommand.cpp; path = src/NexStarCommand.cpp; sourceTree = "<group>"; };
+		C9F2E3850AE92B5600ADD8DE /* NexStarCommand.hpp */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.cpp.h; name = NexStarCommand.hpp; path = src/NexStarCommand.hpp; sourceTree = "<group>"; };
+		C9F2E3860AE92B5600ADD8DE /* NexStarConnection.cpp */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.cpp.cpp; name = NexStarConnection.cpp; path = src/NexStarConnection.cpp; sourceTree = "<group>"; };
+		C9F2E3870AE92B5600ADD8DE /* NexStarConnection.hpp */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.cpp.h; name = NexStarConnection.hpp; path = src/NexStarConnection.hpp; sourceTree = "<group>"; };
+		C9F2E3880AE92B5600ADD8DE /* ServerNexStar.cpp */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.cpp.cpp; name = ServerNexStar.cpp; path = src/ServerNexStar.cpp; sourceTree = "<group>"; };
+		C9F2E3890AE92B5600ADD8DE /* ServerNexStar.hpp */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.cpp.h; name = ServerNexStar.hpp; path = src/ServerNexStar.hpp; sourceTree = "<group>"; };
+		C9F2E38D0AE92B8300ADD8DE /* TelescopeServerNexStar */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = TelescopeServerNexStar; sourceTree = BUILT_PRODUCTS_DIR; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		C9056E570AAF73E5005E7316 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		C9056E690AAF74C3005E7316 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		C9F2E38B0AE92B8300ADD8DE /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		08FB7794FE84155DC02AAC07 /* telescope_server */ = {
+			isa = PBXGroup;
+			children = (
+				08FB7795FE84155DC02AAC07 /* Source */,
+				C6A0FF2B0290797F04C91782 /* Documentation */,
+				1AB674ADFE9D54B511CA2CBB /* Products */,
+			);
+			name = telescope_server;
+			sourceTree = "<group>";
+		};
+		08FB7795FE84155DC02AAC07 /* Source */ = {
+			isa = PBXGroup;
+			children = (
+				C9056E3B0AAF737C005E7316 /* Connection.cpp */,
+				C9056E3C0AAF737C005E7316 /* Connection.hpp */,
+				C9056E410AAF737C005E7316 /* Listener.cpp */,
+				C9056E420AAF737C005E7316 /* Listener.hpp */,
+				C9056E430AAF737C005E7316 /* LogFile.cpp */,
+				C9056E440AAF737C005E7316 /* LogFile.hpp */,
+				C9056E450AAF737C005E7316 /* Lx200Command.cpp */,
+				C9056E460AAF737C005E7316 /* Lx200Command.hpp */,
+				C9056E470AAF737C005E7316 /* Lx200Connection.cpp */,
+				C9056E480AAF737C005E7316 /* Lx200Connection.hpp */,
+				C9056E490AAF737C005E7316 /* MainDummy.cpp */,
+				C9056E4A0AAF737C005E7316 /* MainLx200.cpp */,
+				C9F2E3830AE92B5600ADD8DE /* MainNexStar.cpp */,
+				C9F2E3840AE92B5600ADD8DE /* NexStarCommand.cpp */,
+				C9F2E3850AE92B5600ADD8DE /* NexStarCommand.hpp */,
+				C9F2E3860AE92B5600ADD8DE /* NexStarConnection.cpp */,
+				C9F2E3870AE92B5600ADD8DE /* NexStarConnection.hpp */,
+				C9056E4B0AAF737C005E7316 /* SerialPort.cpp */,
+				C9056E4C0AAF737C005E7316 /* SerialPort.hpp */,
+				C9056E4D0AAF737C005E7316 /* Server.cpp */,
+				C9056E4E0AAF737C005E7316 /* Server.hpp */,
+				C9056E4F0AAF737C005E7316 /* ServerDummy.cpp */,
+				C9056E500AAF737C005E7316 /* ServerDummy.hpp */,
+				C9056E510AAF737C005E7316 /* ServerLx200.cpp */,
+				C9056E520AAF737C005E7316 /* ServerLx200.hpp */,
+				C9F2E3880AE92B5600ADD8DE /* ServerNexStar.cpp */,
+				C9F2E3890AE92B5600ADD8DE /* ServerNexStar.hpp */,
+				C9056E530AAF737C005E7316 /* Socket.cpp */,
+				C9056E540AAF737C005E7316 /* Socket.hpp */,
+			);
+			name = Source;
+			sourceTree = "<group>";
+		};
+		1AB674ADFE9D54B511CA2CBB /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				C9056E590AAF73E5005E7316 /* TelescopeServerDummy */,
+				C9056E6B0AAF74C3005E7316 /* TelescopeServerLx200 */,
+				C9F2E38D0AE92B8300ADD8DE /* TelescopeServerNexStar */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		C6A0FF2B0290797F04C91782 /* Documentation */ = {
+			isa = PBXGroup;
+			children = (
+				C9056E370AAF731A005E7316 /* gpl.txt */,
+				C9056E380AAF731A005E7316 /* lgpl.txt */,
+			);
+			name = Documentation;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		C9056E580AAF73E5005E7316 /* TelescopeServerDummy */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = C9056E5B0AAF7410005E7316 /* Build configuration list for PBXNativeTarget "TelescopeServerDummy" */;
+			buildPhases = (
+				C9056E560AAF73E5005E7316 /* Sources */,
+				C9056E570AAF73E5005E7316 /* Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = TelescopeServerDummy;
+			productName = TelescopeServerDummy;
+			productReference = C9056E590AAF73E5005E7316 /* TelescopeServerDummy */;
+			productType = "com.apple.product-type.tool";
+		};
+		C9056E6A0AAF74C3005E7316 /* TelescopeServerLx200 */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = C9056E6D0AAF74E1005E7316 /* Build configuration list for PBXNativeTarget "TelescopeServerLx200" */;
+			buildPhases = (
+				C9056E680AAF74C3005E7316 /* Sources */,
+				C9056E690AAF74C3005E7316 /* Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				C9056E800AAF7586005E7316 /* PBXTargetDependency */,
+			);
+			name = TelescopeServerLx200;
+			productName = TelescopeServerLx200;
+			productReference = C9056E6B0AAF74C3005E7316 /* TelescopeServerLx200 */;
+			productType = "com.apple.product-type.tool";
+		};
+		C9F2E38C0AE92B8300ADD8DE /* TelescopeServerNexStar */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = C9F2E38F0AE92BA500ADD8DE /* Build configuration list for PBXNativeTarget "TelescopeServerNexStar" */;
+			buildPhases = (
+				C9F2E38A0AE92B8300ADD8DE /* Sources */,
+				C9F2E38B0AE92B8300ADD8DE /* Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = TelescopeServerNexStar;
+			productName = TelescopeServerNexStar;
+			productReference = C9F2E38D0AE92B8300ADD8DE /* TelescopeServerNexStar */;
+			productType = "com.apple.product-type.tool";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		08FB7793FE84155DC02AAC07 /* Project object */ = {
+			isa = PBXProject;
+			buildConfigurationList = 1DEB928908733DD80010E9CD /* Build configuration list for PBXProject "telescope_server" */;
+			hasScannedForEncodings = 1;
+			mainGroup = 08FB7794FE84155DC02AAC07 /* telescope_server */;
+			projectDirPath = "";
+			targets = (
+				C9056E580AAF73E5005E7316 /* TelescopeServerDummy */,
+				C9056E6A0AAF74C3005E7316 /* TelescopeServerLx200 */,
+				C9F2E38C0AE92B8300ADD8DE /* TelescopeServerNexStar */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXSourcesBuildPhase section */
+		C9056E560AAF73E5005E7316 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				C9056E5E0AAF742D005E7316 /* Connection.cpp in Sources */,
+				C9056E5F0AAF742E005E7316 /* Listener.cpp in Sources */,
+				C9056E600AAF742F005E7316 /* LogFile.cpp in Sources */,
+				C9056E610AAF7430005E7316 /* MainDummy.cpp in Sources */,
+				C9056E620AAF7431005E7316 /* Server.cpp in Sources */,
+				C9056E630AAF7431005E7316 /* ServerDummy.cpp in Sources */,
+				C9056E640AAF7432005E7316 /* Socket.cpp in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		C9056E680AAF74C3005E7316 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				C9056E720AAF7505005E7316 /* Connection.cpp in Sources */,
+				C9056E730AAF7506005E7316 /* LogFile.cpp in Sources */,
+				C9056E740AAF750F005E7316 /* Listener.cpp in Sources */,
+				C9056E750AAF7510005E7316 /* Lx200Connection.cpp in Sources */,
+				C9056E760AAF7510005E7316 /* Lx200Command.cpp in Sources */,
+				C9056E770AAF7522005E7316 /* Socket.cpp in Sources */,
+				C9056E780AAF7524005E7316 /* ServerLx200.cpp in Sources */,
+				C9056E790AAF7525005E7316 /* Server.cpp in Sources */,
+				C9056E7A0AAF7525005E7316 /* SerialPort.cpp in Sources */,
+				C9056E7B0AAF7526005E7316 /* MainLx200.cpp in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		C9F2E38A0AE92B8300ADD8DE /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				C9F2E3920AE92BEE00ADD8DE /* Connection.cpp in Sources */,
+				C9F2E3940AE92BEE00ADD8DE /* LogFile.cpp in Sources */,
+				C9F2E3930AE92BEE00ADD8DE /* Listener.cpp in Sources */,
+				C9F2E3980AE92BEE00ADD8DE /* NexStarConnection.cpp in Sources */,
+				C9F2E3960AE92BEE00ADD8DE /* NexStarCommand.cpp in Sources */,
+				C9F2E39C0AE92C0000ADD8DE /* Socket.cpp in Sources */,
+				C9F2E39B0AE92BFB00ADD8DE /* ServerNexStar.cpp in Sources */,
+				C9F2E39D0AE92C6C00ADD8DE /* Server.cpp in Sources */,
+				C9F2E39A0AE92BEE00ADD8DE /* SerialPort.cpp in Sources */,
+				C9F2E3950AE92BEE00ADD8DE /* MainNexStar.cpp in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		C9056E800AAF7586005E7316 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = C9056E580AAF73E5005E7316 /* TelescopeServerDummy */;
+			targetProxy = C9056E7F0AAF7586005E7316 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin XCBuildConfiguration section */
+		1DEB928A08733DD80010E9CD /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					DEBUG3,
+					DEBUG4,
+					DEBUG5,
+					"$(inherited)",
+				);
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				PREBINDING = NO;
+				SDKROOT = /Developer/SDKs/MacOSX10.4u.sdk;
+			};
+			name = Debug;
+		};
+		1DEB928B08733DD80010E9CD /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					DEBUG3,
+					DEBUG4,
+					DEBUG5,
+					"$(inherited)",
+				);
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				PREBINDING = NO;
+				SDKROOT = /Developer/SDKs/MacOSX10.4u.sdk;
+			};
+			name = Release;
+		};
+		C9056E5C0AAF7410005E7316 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				COPY_PHASE_STRIP = NO;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_ENABLE_FIX_AND_CONTINUE = YES;
+				GCC_GENERATE_DEBUGGING_SYMBOLS = YES;
+				GCC_MODEL_TUNING = G5;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				INSTALL_PATH = "$(HOME)/bin";
+				PREBINDING = NO;
+				PRODUCT_NAME = TelescopeServerDummy;
+				ZERO_LINK = YES;
+			};
+			name = Debug;
+		};
+		C9056E5D0AAF7410005E7316 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				COPY_PHASE_STRIP = YES;
+				GCC_ENABLE_FIX_AND_CONTINUE = NO;
+				GCC_GENERATE_DEBUGGING_SYMBOLS = NO;
+				GCC_MODEL_TUNING = G5;
+				INSTALL_PATH = "$(HOME)/bin";
+				PREBINDING = NO;
+				PRODUCT_NAME = TelescopeServerDummy;
+				ZERO_LINK = NO;
+			};
+			name = Release;
+		};
+		C9056E6E0AAF74E1005E7316 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				COPY_PHASE_STRIP = NO;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_ENABLE_FIX_AND_CONTINUE = YES;
+				GCC_GENERATE_DEBUGGING_SYMBOLS = YES;
+				GCC_MODEL_TUNING = G5;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				INSTALL_PATH = "$(HOME)/bin";
+				PREBINDING = NO;
+				PRODUCT_NAME = TelescopeServerLx200;
+				ZERO_LINK = YES;
+			};
+			name = Debug;
+		};
+		C9056E6F0AAF74E1005E7316 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				COPY_PHASE_STRIP = YES;
+				GCC_ENABLE_FIX_AND_CONTINUE = NO;
+				GCC_GENERATE_DEBUGGING_SYMBOLS = NO;
+				GCC_MODEL_TUNING = G5;
+				INSTALL_PATH = "$(HOME)/bin";
+				PREBINDING = NO;
+				PRODUCT_NAME = TelescopeServerLx200;
+				ZERO_LINK = NO;
+			};
+			name = Release;
+		};
+		C9F2E3900AE92BA500ADD8DE /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				COPY_PHASE_STRIP = NO;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_ENABLE_FIX_AND_CONTINUE = YES;
+				GCC_GENERATE_DEBUGGING_SYMBOLS = YES;
+				GCC_MODEL_TUNING = G5;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				INSTALL_PATH = "$(HOME)/bin";
+				PREBINDING = NO;
+				PRODUCT_NAME = TelescopeServerNexStar;
+				ZERO_LINK = YES;
+			};
+			name = Debug;
+		};
+		C9F2E3910AE92BA500ADD8DE /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				COPY_PHASE_STRIP = YES;
+				GCC_ENABLE_FIX_AND_CONTINUE = NO;
+				GCC_GENERATE_DEBUGGING_SYMBOLS = NO;
+				GCC_MODEL_TUNING = G5;
+				INSTALL_PATH = "$(HOME)/bin";
+				PREBINDING = NO;
+				PRODUCT_NAME = TelescopeServerNexStar;
+				ZERO_LINK = NO;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		1DEB928908733DD80010E9CD /* Build configuration list for PBXProject "telescope_server" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				1DEB928A08733DD80010E9CD /* Debug */,
+				1DEB928B08733DD80010E9CD /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		C9056E5B0AAF7410005E7316 /* Build configuration list for PBXNativeTarget "TelescopeServerDummy" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				C9056E5C0AAF7410005E7316 /* Debug */,
+				C9056E5D0AAF7410005E7316 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		C9056E6D0AAF74E1005E7316 /* Build configuration list for PBXNativeTarget "TelescopeServerLx200" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				C9056E6E0AAF74E1005E7316 /* Debug */,
+				C9056E6F0AAF74E1005E7316 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		C9F2E38F0AE92BA500ADD8DE /* Build configuration list for PBXNativeTarget "TelescopeServerNexStar" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				C9F2E3900AE92BA500ADD8DE /* Debug */,
+				C9F2E3910AE92BA500ADD8DE /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 08FB7793FE84155DC02AAC07 /* Project object */;
+}
