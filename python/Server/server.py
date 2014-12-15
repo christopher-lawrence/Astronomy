@@ -37,7 +37,7 @@ class server(threading.Thread):
             print "RaInt: %d, DecInt: %d" % (RaInt, DecInt)
             # Ok to unlock now
             self.coordsLocked = False
-            data = struct.pack("3iIi", 20, 0, int(time.time()), RaInt, DecInt)
+            data = struct.pack("3iIii", 24, 0, time.time(), RaInt, DecInt, 0)
             self.sock.sendData(data)
         
     def angleToStellarium(self,Ra,Dec):
@@ -47,4 +47,3 @@ class server(threading.Thread):
         self.alive = False
         self.sock.close()
         
-    
