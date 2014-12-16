@@ -26,14 +26,14 @@ class server(threading.Thread):
 
     def updateCoords(self, Ra, Dec):
         if(not self.coordsLocked):
-            self.coordsLocked = True
+            #self.coordsLocked = True
             self.NewRa = Ra
             self.NewDec = Dec
-            self.coordsLocked = False
+            #self.coordsLocked = False
     
     def sendCoords(self):
         if (not self.coordsLocked):
-            self.coordsLocked = True
+            #self.coordsLocked = True
             Ra = angles.Angle(r=float(self.NewRa))
             #print "Ra: ", Ra
             Dec = angles.Angle(r=float(self.NewDec))
@@ -41,7 +41,7 @@ class server(threading.Thread):
             [RaInt,DecInt] = self.angleToStellarium(Ra, Dec)
             #print "RaInt: %d, DecInt: %d" % (RaInt, DecInt)
             # Ok to unlock now
-            self.coordsLocked = False
+            #self.coordsLocked = False
             data = struct.pack("3iIii", 24, 0, time.time(), RaInt, DecInt, 0)
             self.sock.sendData(data)
             self.Ra = self.NewRa

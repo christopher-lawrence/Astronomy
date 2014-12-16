@@ -13,7 +13,7 @@ class socks(object):
         self.sock.bind((self.host, self.port))
         self.sock.settimeout(600)#Throws a timeout exception if connections are idle for 10 minutes
         print "Listening on {0}:{1}".format(self.host, self.port)
-        self.sock.listen(1)#set the socket to listen, now it's a server!
+        self.sock.listen(1) #set the socket to listen, now it's a server!
         self.connected = False
         
         try:
@@ -46,6 +46,8 @@ class socks(object):
             print "Receive error: %s" % e
             self.close()
         
+    #def getTcpInfo(self):
+    #	struct.unpack("B"*7+"I"*24, self.connection.getsockopt(socket.SOL_TCP, socket.TCP_INFO, 104))
     def close(self):
         self.alive = False
         self.connection.close()

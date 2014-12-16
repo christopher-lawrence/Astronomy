@@ -12,9 +12,10 @@ class client(threading.Thread):
         try:
             while (self.alive and self.sock.alive and self.server.alive):
                 [Ra,Dec] = self.receiveCoords(10000)
-                if (Ra != False):
-                    self.server.updateCoords(Ra, Dec)
-                time.sleep(1)
+                if (Ra == False):
+                	break;
+                self.server.updateCoords(Ra, Dec)
+                #time.sleep(1)
         except Exception, e:
             print "Client exception ", e.message
         
