@@ -5,13 +5,14 @@ class socks(object):
         self.host = host
         self.port = port
         self.alive = True
-        #self.connection = -1
+        self.connection = -1
     
     def listen(self):
         self.sock = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
         self.sock.setsockopt(socket.SOL_SOCKET, socket.SO_REUSEADDR, 1)
         self.sock.bind((self.host, self.port))
         self.sock.settimeout(600)#Throws a timeout exception if connections are idle for 10 minutes
+        print "Listening on {0}:{1}".format(self.host, self.port)
         self.sock.listen(1)#set the socket to listen, now it's a server!
         self.connected = False
         
@@ -20,7 +21,7 @@ class socks(object):
                 # Wait for a connection
                 self.connection, self.clientAddress = self.sock.accept() 
                 if self.connection != None:
-                    print "Connected to ", self.clientAddress
+                    print "Connected to {0} {1:d}".format(self.clientAddress, self.connection.fileno())
                     self.connected = True
                     break
         except:
@@ -29,18 +30,24 @@ class socks(object):
             self.sock.close()
     
     def sendData(self, data):
-        print "Incoming data[%d]: ", (len(data),data)
+        print "Send data: ", (len(data),data)
         try:
-            self.connection.send(data)
+            for i in range(10):
+                self.connection.send(data)
         except Exception, e:
             print "Send error: %s" % e
-            self.alive = False
+            self.close()
+
     def recieveData(self):
-        print "Receiving data: "
-        return self.connection.recv(1024)
+        try:
+            print "Receiving data: "
+            return self.connection.recv(1024)
+        except Exception, e:
+            print "Receive error: %s" % e
+            self.close()
         
     def close(self):
         self.alive = False
         self.connection.close()
-        self.sock.close()
+        #self.sock.close()
         

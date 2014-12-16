@@ -5,40 +5,47 @@ class server(threading.Thread):
         self.sock = sock
         self.Ra = 0.0
         self.Dec = 0.0
+        self.NewRa = 0.0
+        self.NewDec = 0.0
         self.alive = True
         self.coordsLocked = False
         threading.Thread.__init__(self)
         
-    def run(self):        
-        while(self.alive and self.sock.alive):
-            try:
-                self.sendCoords()
-                time.sleep(1)
-            except Exception as e:
-                self.alive = False
-                print "Server exception ", e.message
+    def run(self):
+        print "Starting server..."
+        self.sendCoords()
+        try:
+            while(self.alive and self.sock.alive):
+                if (self.Ra != self.NewRa and self.Dec != self.NewDec):
+                    self.sendCoords()
+                    #time.sleep(1)
+        except Exception as e:
+            print "Server exception ", e.message
+        
         self.stop()
-    
+
     def updateCoords(self, Ra, Dec):
         if(not self.coordsLocked):
             self.coordsLocked = True
-            self.Ra = Ra
-            self.Dec = Dec
+            self.NewRa = Ra
+            self.NewDec = Dec
             self.coordsLocked = False
     
     def sendCoords(self):
         if (not self.coordsLocked):
             self.coordsLocked = True
-            Ra = angles.Angle(r=float(self.Ra))
-            print "Ra: ", Ra
-            Dec = angles.Angle(r=float(self.Dec))
-            print "Dec: ", Dec
+            Ra = angles.Angle(r=float(self.NewRa))
+            #print "Ra: ", Ra
+            Dec = angles.Angle(r=float(self.NewDec))
+            #print "Dec: ", Dec
             [RaInt,DecInt] = self.angleToStellarium(Ra, Dec)
-            print "RaInt: %d, DecInt: %d" % (RaInt, DecInt)
+            #print "RaInt: %d, DecInt: %d" % (RaInt, DecInt)
             # Ok to unlock now
             self.coordsLocked = False
             data = struct.pack("3iIii", 24, 0, time.time(), RaInt, DecInt, 0)
             self.sock.sendData(data)
+            self.Ra = self.NewRa
+            self.Dec = self.NewDec
         
     def angleToStellarium(self,Ra,Dec):
         return [int(Ra.h*(2147483648/12.0)), int(Dec.d*(1073741824/90.0))]
