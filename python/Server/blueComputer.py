@@ -1,7 +1,13 @@
 """
 Shows how to run a RFCOMM server socket.
 """
-import lightblue
+from lightblue import *
+
+class blueComputer(object):
+	def __init__(self):
+		
+
+class blue
 
 # create and set up server socket
 sock = lightblue.socket()

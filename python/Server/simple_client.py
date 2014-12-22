@@ -19,8 +19,10 @@ s = lightblue.socket()
 s.connect(("00:1A:7D:DA:71:13", 7))
 s.send("Hello world!")
 print "Sent data, waiting for echo..."
-data = ''
-data = s.recv(1024)
+while True:
+	data = s.recv(1024)
+	if (len(data) > 0):
+		break
 print "Got data:", data
 s.close()
 
