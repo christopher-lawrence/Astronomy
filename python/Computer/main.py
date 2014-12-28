@@ -22,7 +22,9 @@ if __name__ == '__main__':
     bluesServer.start()
     
     # Start the 'receive coords' service
-    
+    blueClient = blueClient.blueClient()
+    blueClient.daemon = True
+    blueClient.start()
     
     try:
         while (stellariumServer.isAlive() and stellariumClient.isAlive()):

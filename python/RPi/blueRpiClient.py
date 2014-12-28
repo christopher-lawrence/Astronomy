@@ -13,9 +13,8 @@ class blueRpiClient(object):
         try:
             while (self.alive and self.sock.alive and self.blueServer.alive):
                 [Ra,Dec] = self.receiveCoords(10000)
-                if (Ra == False):
-                	pass;
-                self.blueRpiServer.updateCoords(Ra, Dec)
+                if (Ra != None):
+                    self.blueRpiServer.updateCoords(Ra, Dec)
                 #time.sleep(1)
         except Exception, e:
             print "Client exception ", e.message
@@ -30,6 +29,11 @@ class blueRpiClient(object):
             if not read:
                 return incomingData
             incomingData = self.blueSock.recieveData()
-            return incomingData
+            decoded = json.loads(incomingData)
+            if (decoded['code'] == 3
+                return (decoded['NewRa'], decoded['NewDec'])
+            
+            print "Invalid or empty code sent: ", decoded['3']
+            return None
         except Exception, e:
             print "Failed to receive data from {0}: {1}".format(self.blueSock.clientAddress, e)

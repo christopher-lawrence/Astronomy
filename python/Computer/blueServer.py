@@ -32,7 +32,7 @@ class blueServer(threading.Thread):
     def sendCoords(self):
         if (not self.coordsLocked):
             self.coordsLocked = True
-            data = json.dumps({'code':3, 'Ra':self.NewRa, 'Dec':self.NewDec})
+            data = json.dumps({'code':3, 'NewRa':self.NewRa, 'NewDec':self.NewDec})
             self.blueSock.sendData(data)
             self.Ra = self.NewRa
             self.Dec = self.NewDec
