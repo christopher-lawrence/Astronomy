@@ -38,7 +38,7 @@ class socks(object):
             print "Send error: %s" % e
             self.close()
 
-    def recieveData(self):
+    def receiveData(self):
         try:
             print "Receiving data: "
             return self.connection.recv(1024)

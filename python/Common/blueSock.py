@@ -41,7 +41,7 @@ class blueSock(object):
 
 	def receiveData(self):
 		print "(blue)Receiving data..."
-		if (self.isService):
+		if (self.isServer):
 			return self.connection.recv(1024)
 		return self.socket.recv(1024)
 
@@ -49,3 +49,4 @@ class blueSock(object):
 		self.alive = False
 		if (self.connection != -1):
 			self.connection.close()
+		self.socket.close()

@@ -42,7 +42,7 @@ class stellariumClient(threading.Thread):
             [read,write,ex] = select.select([self.sock.connection], [], [], timeout)
             if not read:
                 return incomingData
-            incomingData = self.sock.recieveData()
+            incomingData = self.sock.receiveData()
             return incomingData
         except Exception, e:
             print "Failed to receive data from Stellarium: {0}".format(e)
