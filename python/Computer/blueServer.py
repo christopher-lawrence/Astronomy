@@ -7,14 +7,14 @@ class blueServer(threading.Thread):
         self.Dec = 0.0
         self.NewRa = 0.0
         self.NewDec = 0.0
-        self.alive = true
+        self.alive = True
         self.coordsLocked = False
         threading.Thread.__init__(self)
     
     def run(self):
         print "Starting Blue Server..."
         try:
-            while (self.alive and blueSock.alive):
+            while (self.alive and self.blueSock.alive):
                 if (self.Ra != self.NewRa or self.Dec != self.NewDec):
                     self.sendCoords()
         except Exception as e:

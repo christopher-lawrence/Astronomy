@@ -50,7 +50,7 @@ class socks(object):
     #	struct.unpack("B"*7+"I"*24, self.connection.getsockopt(socket.SOL_TCP, socket.TCP_INFO, 104))
     def close(self):
         self.alive = False
-        if (connection != -1)
+        if (self.connection != -1):
             self.connection.close()
         #self.sock.close()
         

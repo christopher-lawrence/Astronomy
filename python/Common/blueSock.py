@@ -1,20 +1,22 @@
 from lightblue import *
 
 class blueSock(object):
-	def __init__(self, isServer = False):
+	def __init__(self):
 		self.socket = socket()
-        	self.alive = True
-        	self.connection = -1
-        	self.clientAddress = None
-		
-    	def startService(self, port="", channel=0):
-        	print "Starting service 'RPi Bluetooth'..."
-        	self.socket.bind((port,channel))
-        	self.socket.listen(1)
-        	advertise("RPi Bluetooth", self.socket,RFCOMM)
-        	self.connection, self.clientAddress = self.socket.accept()
-        	print "Connected by ", self.clientAddress
-    
+		self.alive = True
+		self.clientAddress = None
+		self.connection = -1
+		self.isServer = False
+
+	def startService(self, port = "", channel = 0):
+		print "Starting service 'RPi Bluetooth'..."
+		self.isServer = True
+		self.socket.bind((port,channel))
+		self.socket.listen(1)
+		advertise("RPi Bluetooth", self.socket,RFCOMM)
+		self.connection, self.clientAddress = self.socket.accept()
+		print "Connected by ", self.clientAddress
+
 	def connect(self):
 		print "Connecting..."
 		self.findService()
@@ -29,15 +31,21 @@ class blueSock(object):
 				self.channel = services[0][1]
 				print "Service found"
 				break;
-		
+
 	def sendData(self, data):
-		print "Sending data ", data
-		self.socket.send(data)
-	
+		print "(blue)Sending data ", data
+		if (self.isServer):
+			self.connection.send(data)
+		else:
+			self.socket.send(data)
+
 	def receiveData(self):
+		print "(blue)Receiving data..."
+		if (self.isService):
+			return self.connection.recv(1024)
 		return self.socket.recv(1024)
-    
-    	def close(self):
-        	self.alive = False
-        	if (self.connection != -1):
-            		self.connection.close()
+
+	def close(self):
+		self.alive = False
+		if (self.connection != -1):
+			self.connection.close()

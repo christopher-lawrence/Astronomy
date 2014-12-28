@@ -1,4 +1,4 @@
-import stellariumServer, stellariumClient, socks, time, socket, blueSock, blueServer
+import stellariumServer, stellariumClient, socks, blueSock, blueServer, blueClient
 
 if __name__ == '__main__':
     serverSock = socks.socks('', 10002)
@@ -8,21 +8,23 @@ if __name__ == '__main__':
     blueSock = blueSock.blueSock()
     blueSock.connect()
     
+	# Start the stellarium server (send coords)
     stellariumServer = stellariumServer.stellariumServer(serverSock)
     stellariumServer.daemon = True
     stellariumServer.start()
     
-    stellariumClient = stellariumClient.stellariumClient(blueSock, serverSock)
+    # Start the 'send coords' service
+    blueServer = blueServer.blueServer(blueSock)
+    blueServer.daemon = True
+    blueServer.start()
+    
+    # Start the stellarium client (receive coords)
+    stellariumClient = stellariumClient.stellariumClient(blueServer, serverSock)
     stellariumClient.daemon = True
     stellariumClient.start()    
     
-    # Start the 'send coords' service
-    blueServer = blueServer.blueServer()
-    blueServer.daemon = True
-    bluesServer.start()
-    
     # Start the 'receive coords' service
-    blueClient = blueClient.blueClient()
+    blueClient = blueClient.blueClient(blueSock, stellariumServer)
     blueClient.daemon = True
     blueClient.start()
     

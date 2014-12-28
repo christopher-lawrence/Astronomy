@@ -18,7 +18,7 @@ class stellariumClient(threading.Thread):
                 self.blueServer.updateCoords(Ra, Dec)
                 #time.sleep(1)
         except Exception, e:
-            print "Client exception ", e.message
+            print "Stellarium Client exception ", e.message
         
         self.stop()
         
