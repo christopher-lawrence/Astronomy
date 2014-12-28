@@ -1,13 +1,15 @@
 from lightblue import *
 
-class blueSocks(object):
+class blueSock(object):
 	def __init__(self):
 		self.socket = socket()
+        self.connected = False
 		
 	def connect(self):
 		print "Connecting..."
 		self.findService()
 		self.socket.connect((self.address, self.channel))
+        self.connected = True
 		
 	def findService(self):
 		print "Finding service..."
