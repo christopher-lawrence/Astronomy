@@ -3,17 +3,17 @@ from lightblue import *
 class blueSock(object):
 	def __init__(self, isServer = False):
 		self.socket = socket()
-        self.alive = True
-        self.connection = -1
-        self.clientAddress = None
+        	self.alive = True
+        	self.connection = -1
+        	self.clientAddress = None
 		
-    def startService(self, port="", channel=0):
-        print "Starting service 'RPi Bluetooth'..."
-        self.socket.bind((port,channel))
-        s.socket.listen(1)
-        advertise("RPi Bluetooth", s,RFCOMM)
-        self.connection, self.clientAddress = s.accept()
-        print "Connected by ", self.clientAddress
+    	def startService(self, port="", channel=0):
+        	print "Starting service 'RPi Bluetooth'..."
+        	self.socket.bind((port,channel))
+        	self.socket.listen(1)
+        	advertise("RPi Bluetooth", self.socket,RFCOMM)
+        	self.connection, self.clientAddress = self.socket.accept()
+        	print "Connected by ", self.clientAddress
     
 	def connect(self):
 		print "Connecting..."
@@ -37,7 +37,7 @@ class blueSock(object):
 	def receiveData(self):
 		return self.socket.recv(1024)
     
-    def close(self):
-        self.alive = False
-        if (self.connection != -1):
-            self.connection.close()
+    	def close(self):
+        	self.alive = False
+        	if (self.connection != -1):
+            		self.connection.close()
