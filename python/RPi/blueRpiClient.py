@@ -1,7 +1,7 @@
 from lightblue import *
-import blueSock
+import blueSock, threading, select, json
 
-class blueRpiClient(object):
+class blueRpiClient(threading.Thread):
     def __init__(self, blueSock, blueRpiServer):
         self.blueSock = blueSock
         self.blueRpiServer = blueRpiServer
@@ -11,15 +11,15 @@ class blueRpiClient(object):
     def run(self):
         print "Starting Blue RPi Client service..."
         try:
-            while (self.alive and self.sock.alive and self.blueServer.alive):
+            while (self.alive and self.blueSock.alive and self.blueRpiServer.alive):
                 [Ra,Dec] = self.receiveCoords(10000)
                 if (Ra != None):
                     self.blueRpiServer.updateCoords(Ra, Dec)
                 #time.sleep(1)
         except Exception, e:
-            print "Client exception ", e.message
+            print "RPi Client exception ", e.message
         
-        self.stop()
+        self.close()
         
     def receiveCoords(self,timeout):
         try:
@@ -28,12 +28,17 @@ class blueRpiClient(object):
             [read,write,ex] = select.select([self.blueSock.connection], [], [], timeout)
             if not read:
                 return incomingData
-            incomingData = self.blueSock.recieveData()
+            incomingData = self.blueSock.receiveData()
             decoded = json.loads(incomingData)
-            if (decoded['code'] == 3
+            print "DEBUG: decoded=", decoded
+            if decoded['code'] == 3:
                 return (decoded['NewRa'], decoded['NewDec'])
-            
+ 
             print "Invalid or empty code sent: ", decoded['3']
             return None
         except Exception, e:
             print "Failed to receive data from {0}: {1}".format(self.blueSock.clientAddress, e)
+
+    def close(self):
+        self.alive = False
+        self.blueSock.close()

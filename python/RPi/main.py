@@ -3,7 +3,7 @@ import blueRpiServer, blueRpiClient, blueSock, time
 if __name__ == '__main__':    
     # Create a bluetooth socket
     blueSock = blueSock.blueSock()
-    blueSock.connect()
+    blueSock.startService("", 7)
     
     # Start the 'send coords' service
     blueRpiServer = blueRpiServer.blueRpiServer(blueSock)
@@ -23,6 +23,6 @@ if __name__ == '__main__':
         blueRpiServer.stop()
         blueRpiClient.stop()
         
-    blueRpiServer.stop()
-    blueRpiClient.stop()
+    blueRpiServer.close()
+    blueRpiClient.close()
     print "Done."

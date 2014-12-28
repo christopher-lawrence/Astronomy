@@ -1,4 +1,4 @@
-import blueSock, threading
+import blueSock, threading, json
 
 class blueRpiServer(threading.Thread):
     def __init__(self, blueSock):
@@ -7,18 +7,18 @@ class blueRpiServer(threading.Thread):
         self.Dec = 0.0
         self.NewRa = 0.0
         self.NewDec = 0.0
-        self.alive = true
+        self.alive = True
         self.coordsLocked = False
         threading.Thread.__init__(self)
     
     def run(self):
-        print "Starting Blue Server..."
+        print "Starting Rpi Blue Server..."
         try:
-            while (self.alive and blueSock.alive):
+            while (self.alive and self.blueSock.alive):
                 if (self.Ra != self.NewRa or self.Dec != self.NewDec):
                     self.sendCoords()
         except Exception as e:
-            print "Blue server exception ", e.message
+            print "RPi Blue server exception ", e.message
         
     def updateCoords(self, Ra, Dec):
         if(not self.coordsLocked):
