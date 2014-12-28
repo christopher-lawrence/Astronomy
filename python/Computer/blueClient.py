@@ -8,7 +8,7 @@ class blueClient(threading.Thread):
         threading.Thread.__init__(self)
 
 	def run(self):
-		print "Starting Blue RPi Client service..."
+		print "Starting Blue Client service..."
 		try:
 			while (self.alive and self.blueSock.alive and self.stellariumServer.alive):
 				[Ra,Dec] = self.receiveCoords(10000)
@@ -36,3 +36,7 @@ class blueClient(threading.Thread):
 			return None
 		except Exception, e:
 			print "Failed to receive data from {0}: {1}".format(self.blueSock.address, e)
+			
+	def close(self):
+		self.alive = False
+		self.blueSock.close()
