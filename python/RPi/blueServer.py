@@ -10,7 +10,8 @@ print "Listening on %s port %s" % (s.getsockname()[0], s.getsockname()[1])
 
 conn, addr = s.accept()
 print "Connected by", addr
-result = conn.recv(1024)
+#result = conn.recv(1024)
+[result,write,ex] = select.select([conn], [], [], timeout)
 conn.send('WTF?!?')
 
 decoded = json.loads(result)

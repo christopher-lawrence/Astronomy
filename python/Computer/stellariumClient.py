@@ -1,20 +1,21 @@
-import socks, threading, server, angles, struct, select, time
+import socks, threading, blueServer, angles, struct, select, time
 
-class client(threading.Thread):
-    def __init__(self, server, sock):
-        self.server = server
+class stellariumClient(threading.Thread):
+    def __init__(self, blueServer, sock):
+        self.blueServer = blueServer
         self.sock = sock
         threading.Thread.__init__(self)
         self.alive = True
     
     def run(self):
-        print "Starting client..."
+        print "Starting Stellarium Client..."
         try:
-            while (self.alive and self.sock.alive and self.server.alive):
+            while (self.alive and self.sock.alive and self.blueServer.alive):
                 [Ra,Dec] = self.receiveCoords(10000)
                 if (Ra == False):
-                	break;
-                self.server.updateCoords(Ra, Dec)
+                	pass;
+                # TODO: Change this to the blueServer
+                self.blueServer.updateCoords(Ra, Dec)
                 #time.sleep(1)
         except Exception, e:
             print "Client exception ", e.message

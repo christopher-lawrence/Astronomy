@@ -1,6 +1,6 @@
 import socks, threading, angles, time, struct
 
-class server(threading.Thread):
+class stellariumServer(threading.Thread):
     def __init__(self, sock):
         self.sock = sock
         self.Ra = 0.0
