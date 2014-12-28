@@ -35,8 +35,8 @@ if __name__ == '__main__':
     except Exception, e:
         print "Exception encountered: %s. Stopping server..." % e
     finally:
-    	blueServer.close()
-    	blueClient.close()
+    	blueServer.stop()
+    	blueClient.stop()
     	stellariumServer.stop()
     	stellariumClient.stop()
     	print "Done."

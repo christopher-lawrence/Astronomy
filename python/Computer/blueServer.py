@@ -20,6 +20,8 @@ class blueServer(threading.Thread):
         except Exception as e:
             print "Blue server exception ", e.message
         
+        self.stop()
+        
     def updateCoords(self, Ra, Dec):
         if(not self.coordsLocked):
             self.coordsLocked = True
@@ -38,6 +40,6 @@ class blueServer(threading.Thread):
             self.Dec = self.NewDec
             self.coordsLocked = False
             
-    def close(self):
+    def stop(self):
         self.alive = False
         self.blueSock.close()

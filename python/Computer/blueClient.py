@@ -18,7 +18,7 @@ class blueClient(threading.Thread):
 		except Exception, e:
 			print "Blue Client exception ", e.message
 		
-		self.close()
+		self.stop()
 		
 	def receiveCoords(self,timeout):
 		try:
@@ -30,13 +30,13 @@ class blueClient(threading.Thread):
 			incomingData = self.blueSock.receiveData()
 			decoded = json.loads(incomingData)
 			if (decoded['code'] == 3):
-				return (decoded.NewRa, decoded.NewDec)
+				return (decoded['NewRa'], decoded['NewDec'])
 
 			print "Invalid or empty code sent: ", decoded['3']
 			return None
 		except Exception, e:
 			print "Failed to receive data from {0}: {1}".format(self.blueSock.address, e)
 			
-	def close(self):
+	def stop(self):
 		self.alive = False
 		self.blueSock.close()

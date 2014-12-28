@@ -14,7 +14,6 @@ class stellariumClient(threading.Thread):
                 [Ra,Dec] = self.receiveCoords(10000)
                 if (Ra == False):
                 	pass;
-                # TODO: Change this to the blueServer
                 self.blueServer.updateCoords(Ra, Dec)
                 #time.sleep(1)
         except Exception, e:
