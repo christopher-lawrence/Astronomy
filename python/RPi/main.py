@@ -1,12 +1,16 @@
 import blueRpiServer, blueRpiClient, blueSock, time
 
 if __name__ == '__main__':    
-    # Create a bluetooth socket
+    # Create a bluetooth server socket
     blueSock = blueSock.blueSock()
-    blueSock.startService("", 7)
+    blueSock.startService('RPi Bluetooth', "", 7)
+    
+    # Connect to computer bluetooth sever
+    blueSockClient = blueSock.blueSock()
+    blueSockClient.connect('Computer Bluetooth')
     
     # Start the 'send coords' service
-    blueRpiServer = blueRpiServer.blueRpiServer(blueSock)
+    blueRpiServer = blueRpiServer.blueRpiServer(blueSockClient)
     blueRpiServer.daemon = True
     blueRpiServer.start()
     

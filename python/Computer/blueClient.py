@@ -2,10 +2,10 @@ import blueSock, threading, stellariumServer, json, select
 
 class blueClient(threading.Thread):
     def __init__(self, blueSock, stellariumServer):
+        threading.Thread.__init__(self)
         self.blueSock = blueSock
         self.stellariumServer = stellariumServer
-        self.alive = True 
-        threading.Thread.__init__(self)
+        self.alive = True
 
 	def run(self):
 		print "Starting Blue Client service..."
@@ -17,8 +17,8 @@ class blueClient(threading.Thread):
                 #time.sleep(1)
 		except Exception, e:
 			print "Blue Client exception ", e.message
-		
-		self.stop()
+        finally:
+            self.stop()
 		
 	def receiveCoords(self,timeout):
 		try:
