@@ -5,13 +5,9 @@ if __name__ == '__main__':
     serverSock = socks.socks('', 10002)
     serverSock.listen()
     
-    # Create a bluetooth server socket
-    blueSockServer = blueSock.BlueSock()
-    blueSockServer.startService('Computer Bluetooth')
-    
     # Create a bluetooth socket
     blueSock = blueSock.blueSock()
-    blueSock.connect()
+    blueSock.connect('RPi Bluetooth')
     
     # Start the 'send coords' service
     blueServer = blueServer.blueServer(blueSock)
@@ -29,7 +25,7 @@ if __name__ == '__main__':
     stellariumServer.start()
     
     # Start the 'receive coords' service
-    blueClient = blueClient.blueClient(blueSockServer, stellariumServer)
+    blueClient = blueClient.blueClient(blueSock, stellariumServer)
     blueClient.daemon = True
     blueClient.start()
     

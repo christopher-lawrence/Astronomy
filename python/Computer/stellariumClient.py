@@ -27,10 +27,11 @@ class stellariumClient(threading.Thread):
             #print ("Incoming data: ", (len(incomingData),incomingData))
             data = struct.unpack("3iIi", incomingData)
             #print("Unpacked data: Length:%d Type:%d Time:%d RA: %d Dec: %d" % (data[0], data[1], data[2], data[3], data[4]))
-            [Ra,Dec] = self.stellariumToAngle(data[3], data[4])
+            #[Ra,Dec] = self.stellariumToAngle(data[3], data[4])
             
             #print "Sending update to server: Ra={0:02f}, Dec={1:02f}".format(Ra.r, Dec.r)
-            return [Ra.r,Dec.r]
+            #return [Ra.r,Dec.r]
+            return (data[3], data[4])
         else:
             return [False,False]
             

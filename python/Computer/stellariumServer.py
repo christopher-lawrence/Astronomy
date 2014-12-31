@@ -18,7 +18,6 @@ class stellariumServer(threading.Thread):
             while(self.alive and self.sock.alive):
                 if (self.Ra != self.NewRa or self.Dec != self.NewDec):
                     self.sendCoords()
-                    #time.sleep(1)
         except Exception as e:
             print "Server exception ", e.message
         
@@ -34,17 +33,18 @@ class stellariumServer(threading.Thread):
     def sendCoords(self):
         if (not self.coordsLocked):
             self.coordsLocked = True
-            Ra = angles.Angle(r=float(self.NewRa))
+            #Ra = angles.Angle(r=float(self.NewRa))
             #print "Ra: ", Ra
-            Dec = angles.Angle(r=float(self.NewDec))
+            #Dec = angles.Angle(r=float(self.NewDec))
             #print "Dec: ", Dec
             #print "RaInt: %d, DecInt: %d" % (RaInt, DecInt)
             self.Ra = self.NewRa
             self.Dec = self.NewDec
             # Ok to unlock now
             self.coordsLocked = False
-            [RaInt,DecInt] = self.angleToStellarium(Ra, Dec)
-            data = struct.pack("3iIii", 24, 0, time.time(), RaInt, DecInt, 0)
+            #[RaInt,DecInt] = self.angleToStellarium(Ra, Dec)
+            #data = struct.pack("3iIii", 24, 0, time.time(), RaInt, DecInt, 0)
+            data = struct.pack("3iIii", 24, 0, time.time(), self.Ra, self.Dec, 0)
             self.sock.sendData(data)
         
     def angleToStellarium(self,Ra,Dec):
