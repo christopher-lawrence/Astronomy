@@ -9,11 +9,12 @@ class blueRpiClient(threading.Thread):
         threading.Thread.__init__(self)
     
     def run(self):
-        print "Starting Blue RPi Client service..."
         try:
+            print "Starting Blue RPi Client service..."
             while (self.alive and self.blueSock.alive and self.blueRpiServer.alive):
                 [Ra,Dec] = self.receiveCoords(10000)
                 if (Ra != None):
+                    print "Updating server with new coords :", (Ra, Dec)
                     self.blueRpiServer.updateCoords(Ra, Dec)
                 #time.sleep(1)
         except Exception, e:
@@ -25,7 +26,8 @@ class blueRpiClient(threading.Thread):
         try:
             incomingData = None
             #print "Waiting for data from {0}...".format(self.sock.host)
-            [read,write,ex] = select.select([self.blueSock.connection], [], [], timeout)
+            #print "self.blueSock.socket: %s, self.blueSock.socket.fineno(): %d" %(self.blueSock.socket, self.blueSock.socket.fileno())
+            [read,write,ex] = select.select([self.blueSock.connection.fileno()], [], [], timeout)
             if not read:
                 return incomingData
             incomingData = self.blueSock.receiveData()
