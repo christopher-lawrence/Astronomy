@@ -2,6 +2,7 @@ import blueSock, threading, json
 
 class blueServer(threading.Thread):
     def __init__(self, blueSock):
+        threading.Thread.__init__(self)
         self.blueSock = blueSock
         self.Ra = 0.0
         self.Dec = 0.0
@@ -9,7 +10,6 @@ class blueServer(threading.Thread):
         self.NewDec = 0.0
         self.alive = True
         self.coordsLocked = False
-        threading.Thread.__init__(self)
     
     def run(self):
         print "Starting Blue Server..."
