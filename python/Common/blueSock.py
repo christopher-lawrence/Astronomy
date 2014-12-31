@@ -6,7 +6,6 @@ class blueSock(object):
         self.alive = True
         self.clientAddress = None
         self.connection = -1
-        self.isService = False
         self.address = address
         self.channel = channel
 
@@ -16,7 +15,6 @@ class blueSock(object):
         self.socket.listen(1)
         advertise(advertiseName, self.socket, RFCOMM)
         self.connection, self.clientAddress = self.socket.accept()
-        self.isService = True
         print "Connected by ", self.clientAddress
 
     def connect(self, advertiseName=None):
@@ -24,12 +22,12 @@ class blueSock(object):
             self.findService(advertiseName)
         print "Connecting to address (%s, %d)..." % (self.address, self.channel)
         self.socket.connect((self.address, self.channel))
+        self.connection = self.socket
         
     def findService(self, advertiseName):
         print "Finding service '%s'..." % advertiseName
         while True:
             services = findservices(name=advertiseName)
-            print "Services: ", services
             if (len(services) > 0):
                 self.address = services[0][0]
                 self.channel = services[0][1]
@@ -37,21 +35,14 @@ class blueSock(object):
                 break;
 
     def sendData(self, data):
-        print "(blue)Sending data ", (data, self.isService)
-        if (self.isService):
-            print "(blue) sending to ", self.connection.getpeername()
-            self.connection.send(data)
-        else:
-            print "(blue) sending to ", self.socket.getpeername()
-            self.socket.send(data)
+        #print "(blue)Sending data ", data
+        #print "(blue) sending to ", self.connection.getpeername()
+        self.connection.send(data)
 
     def receiveData(self):
-        print "(blue)Receiving data...", self.isService
-        if (self.isService):
-            return self.connection.recv(1024)
-        return self.socket.recv(1024)
+        #print "(blue)Receiving data..."
+        return self.connection.recv(1024)
 
     def close(self):
         self.alive = False
-        if (self.connection != -1):
-            self.connection.close()
+        self.connection.close()
