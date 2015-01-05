@@ -4,10 +4,10 @@ class blueServer(threading.Thread):
     def __init__(self, blueSock):
         threading.Thread.__init__(self)
         self.blueSock = blueSock
-        self.Ra = 0.0
-        self.Dec = 0.0
-        self.NewRa = 0.0
-        self.NewDec = 0.0
+        self.Ra = 0x0
+        self.Dec = 0x0
+        self.NewRa = 0x0
+        self.NewDec = 0x0
         self.alive = True
         self.coordsLocked = False
     
