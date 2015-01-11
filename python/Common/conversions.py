@@ -26,3 +26,9 @@ def decimalToDegrees(decimal):
     if (decimal < 0):
         return degrees * -1, minutes, seconds
     return degrees, minutes, seconds
+
+def ConvertTwosCompliment(self, val):
+    if (val & (1<<(16 - 1)) != 0):
+        val = val - (1<<16)
+    if val == -4096: return val
+    return round(val * self.gain)

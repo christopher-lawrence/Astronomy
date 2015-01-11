@@ -80,29 +80,29 @@ class HMC5883L(object):
         self.decDegrees = degrees
         self.decMinutes = minutes
         self.declination = conversions.degreesToDecimal(degrees, minutes)
-        self.setConfiguration()
+        self.SetConfiguration()
 
-    def setConfiguration(self, gain=GAIN_1_3, sampleRate=SAMPLE_8, dataRate=OUTPUT_15, mode=MODE_NORMAL, operationMode=OP_CONTINUOUS):
+    def SetConfiguration(self, gain=GAIN_1_3, sampleRate=SAMPLE_8, dataRate=OUTPUT_15, mode=MODE_NORMAL, operationMode=OP_CONTINUOUS):
         configA = 0x0
         configA |= sampleRate<<self.SAMPLE_OFFSET
         configA |= dataRate<<self.OUTPUT_OFFSET
         configA |= mode<<self.MODE_OFFSET
         self.bus.write_byte_data(self.address, self.REGA, configA) 
-        self.setGain(gain)
-        self.setMode(operationMode)
+        self.SetGain(gain)
+        self.SetMode(operationMode)
 
-    def setGain(self, gain=GAIN_1_3):
+    def SetGain(self, gain=GAIN_1_3):
         self.bus.write_byte_data(self.address, self.REGB, (gain<<self.GAIN_OFFSET))  
         self.gain = self.GAIN[gain]
     
-    def setMode(self, mode=MODE_NORMAL):
+    def SetMode(self, mode=MODE_NORMAL):
         self.bus.write_byte_data(self.address, self.MODEREG, (mode<<self.MODE_OFFSET)) 
 
-    def getHeading(self):
-        output = self.readOutputData()
+    def GetHeading(self):
+        output = self.__readOutputData()
         return (((output[0] << 8) | output[1]), ((output[4] << 8) | output[5]), ((output[2] << 8) | output[3]))
 
-    def readOutputData(self):
+    def __readOutputData(self):
         output = []
         i=0
         while i<6:
@@ -111,26 +111,15 @@ class HMC5883L(object):
             #if (result > 127):
             #    print "Subtracting 256 from ", result
             #    result = result - 256
-            print "%d: %s" %(i, hex(result))
+            #print "%d: %s" %(i, hex(result))
             output.append(result)
             i += 1
         return output
     
-    def convert_twos_compliment(self, val):
-        if (val & (1<<(16 - 1)) != 0):
-            val = val - (1<<16)
-        if val == -4096: return val
-        #val = ~val + 1
-        return round(val * self.gain)
-        #if val == -4096: return val
-        #return round(val * self.gain, 4)
+    # Moved this to Common/conversions.py    
+    #def ConvertTwosCompliment(self, val):
 
-    def headingCoords(self, x, y):
+    def HeadingCoords(self, x, y):
         headingRad = math.atan2(x, y)
         headingRad += math.radians(self.declination)
-        if headingRad < 0:
-            headingRad += 2 * math.pi
-        elif headingRad > 2 * math.pi:
-            headingRad -= 2 * math.pi
-
         return math.degrees(headingRad) 

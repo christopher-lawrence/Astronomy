@@ -1,4 +1,4 @@
-import hmc5883l, sys, time
+import hmc5883l, sys, time, conversions
 
 if __name__ == '__main__':
     compass = hmc5883l.HMC5883L()
@@ -19,8 +19,8 @@ if __name__ == '__main__':
             print "Z: failed!"
         else:
             print "Z: %d - %d" %(z, convertZ)
-        print "XY: ", compass.headingCoords(convertX, convertY)
-        print "YZ: ", compass.headingCoords(convertY, convertZ)
-        print "XZ: ", compass.headingCoords(convertX, convertZ)
+        print "XY: ", conversions.decimalToDegrees(compass.headingCoords(convertX, convertY))
+        print "YZ: ", conversions.decimalToDegrees(compass.headingCoords(convertY, convertZ))
+        print "XZ: ", conversions.decimalToDegrees(compass.headingCoords(convertX, convertZ))
         #sys.stdout.flush()
         time.sleep(0.5)
