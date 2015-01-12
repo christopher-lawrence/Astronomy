@@ -16,3 +16,11 @@ if __name__ == '__main__':
     print "\ndecimalToDegrees(-182.5241667)"
     value4 = conversions.decimalToDegrees(-182.5241667)
     print 'value: ', value4
+
+    print '\nstellariumToPiRa(3960111917)'
+    value5 = conversions.stellariumToPiRa(3960111917)
+    print 'value: ', value5
+
+    print '\npiToStellariumRa(331, 55, 57.89)'
+    value6 = conversions.piToStellariumRa(331, 55, 57.89)
+    print 'value: ', value6
