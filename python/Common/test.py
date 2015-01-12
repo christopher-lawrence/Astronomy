@@ -5,7 +5,7 @@ if __name__ == '__main__':
     value1 = conversions.degreesToDecimal(182, 31, 27)
     print 'value: ', value1
 
-    print 'degreesToDecimal(-182, 32, 27)'
+    print '\ndegreesToDecimal(-182, 32, 27)'
     value2 = conversions.degreesToDecimal(-182, 31, 27)
     print 'value: ', value2
     
@@ -24,3 +24,12 @@ if __name__ == '__main__':
     print '\npiToStellariumRa(331, 55, 57.89)'
     value6 = conversions.piToStellariumRa(331, 55, 57.89)
     print 'value: ', value6
+
+    # 11930464 == 1 degree
+    print '\nstellariumToPiRa(11930464)'
+    value7 = conversions.stellariumToPiRa(11930464)
+    print 'value: ', value7
+
+    print '\nstellariumToPiRa(11930464*180)'
+    value8 = conversions.stellariumToPiRa(11930464*180)
+    print 'value: ', value8

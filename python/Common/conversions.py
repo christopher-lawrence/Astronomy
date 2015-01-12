@@ -1,6 +1,6 @@
 import math
 
-MAX_INT_VALUE = 0x7FFFFFFF+1
+MAX_INT_VALUE = 0x80000000
 
 def degreesToDecimal(degrees, minutes = 0, seconds = 0):
     total = 0.0
@@ -34,9 +34,16 @@ def hoursToDegrees(hours):
     hour = math.trunc(conversion)
     # Take the fraction portion * 60
     mins = math.modf(conversion)[0] * 60
-    secs = math.modf(mins)[0] * 60
+    secs = round((math.modf(mins)[0] * 60), 2)
+    mins = math.trunc(mins)
+    if (secs == 60.0):
+	mins += 1
+	secs = 0
     degrees = math.trunc(conversion) 
-    return degrees, math.trunc(mins), round(secs, 2)    
+    if (mins == 60):
+	degrees += 1
+	mins = 0
+    return degrees, mins, secs    
 
 def degreesToHours(degrees, mins, secs):
     total = float(degrees)
