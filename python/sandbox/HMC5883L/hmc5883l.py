@@ -73,6 +73,11 @@ class HMC5883L(object):
     OP_IDLE1        = 0x2
     OP_IDLE2        = 0x3
 
+    # Misc
+    GAUSS_LSB_XY    = 1090.0
+    GAUSS_LSB_Z     = 920.0
+    SENSORS_GAUSS_TO_MICROTESLA = 100
+
     def __init__(self, port=1, address=0x1E, declination=(9,12)):
         self.bus = smbus.SMBus(port)
         self.address = address
@@ -100,7 +105,26 @@ class HMC5883L(object):
 
     def GetHeading(self):
         output = self.__readOutputData()
-        return (((output[0] << 8) | output[1]), ((output[4] << 8) | output[5]), ((output[2] << 8) | output[3]))
+        rawX = (output[0] << 8 | output[1])
+        rawY = (output[4] << 8 | output[5])
+        rawZ = (output[2] << 8 | output[3])
+        twoX = self.ConvertTwosCompliment(rawX)
+        twoY = self.ConvertTwosCompliment(rawY)
+        twoZ = self.ConvertTwosCompliment(rawZ)
+        print 'rawX, rawY, rawZ', (rawX, rawY, rawZ)
+        print 'twoX, twoY, twoZ', (hex(self.ConvertTwosCompliment(rawX)), hex(self.ConvertTwosCompliment(rawY)), hex(self.ConvertTwosCompliment(rawZ)))
+        x = (twoX / self.GAUSS_LSB_XY * self.SENSORS_GAUSS_TO_MICROTESLA)
+        y = (twoY / self.GAUSS_LSB_XY * self.SENSORS_GAUSS_TO_MICROTESLA)
+        z = (twoZ / self.GAUSS_LSB_Z * self.SENSORS_GAUSS_TO_MICROTESLA)
+        #x = self.ConvertTwosCompliment((output[0] << 8 | output[1]))  
+        #y = self.ConvertTwosCompliment((output[4] << 8 | output[5])) * -1
+        #z = self.ConvertTwosCompliment((output[2] << 8 | output[3])) * -1
+        return (x, y, z)
+        #return (((output[0] << 8) | output[1]), ((output[4] << 8) | output[5]), ((output[2] << 8) | output[3]))
+
+    def GetCoordinatesDecimal(self):
+        (x, y, z) = self.GetHeading()
+        return (self.HeadingCoords(y, x), self.HeadingCoords(x,z))
 
     def __readOutputData(self):
         output = []
@@ -116,10 +140,17 @@ class HMC5883L(object):
             i += 1
         return output
     
-    # Moved this to Common/conversions.py    
-    #def ConvertTwosCompliment(self, val):
+    def ConvertTwosCompliment(self, val):
+        if (val & (1<<(16 - 1)) != 0):
+            val = val - (1<<16)
+        if val == -4096: return val
+        return val
+        #return round(val * self.gain)
 
-    def HeadingCoords(self, x, y):
+    def HeadingCoords(self, x, y, isDec = False):
         headingRad = math.atan2(x, y)
-        headingRad += math.radians(self.declination)
+        #if not isDec:
+        #    headingRad += math.radians(self.declination)
+        #    if headingRad > 2*math.pi:
+        #        headingRad -= 2*math.pi
         return math.degrees(headingRad) 
