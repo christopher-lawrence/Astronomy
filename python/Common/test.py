@@ -33,3 +33,15 @@ if __name__ == '__main__':
     print '\nstellariumToPiRa(11930464*180)'
     value8 = conversions.stellariumToPiRa(11930464*180)
     print 'value: ', value8
+
+    print '\nstellariumToPiDec(-199494690)'
+    value9 = conversions.stellariumToPiDec(-199494690)
+    print 'value: ', value9
+    
+    print '\npiToStellariumDec(-16, 43, 17.23)'
+    value10 = conversions.piToStellariumDec(-16, 43, 17.23)
+    print 'value: ', value10
+    
+    print '\nstellariumToPiDec(-199494702)'
+    value11 = conversions.stellariumToPiDec(-199494702)
+    print 'value: ', value11

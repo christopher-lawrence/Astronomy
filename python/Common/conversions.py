@@ -1,6 +1,7 @@
 import math
 
-MAX_INT_VALUE = 0x80000000
+MAX_RA_VALUE = 0x80000000
+MAX_DEC_VALUE = 0x40000000
 
 def degreesToDecimal(degrees, minutes = 0, seconds = 0):
     total = 0.0
@@ -8,12 +9,12 @@ def degreesToDecimal(degrees, minutes = 0, seconds = 0):
     minutesAbs = abs(minutes)
     degreesAbs = abs(degrees)
     if (secondsAbs > 0):
-        total = secondsAbs/float(60)
+        total += secondsAbs/60.0
     if (minutesAbs > 0):
-       total = ((minutesAbs + total)/float(60))
-    total += abs(degreesAbs)
+       total = ((minutesAbs + total)/60.0)
+    total += degreesAbs
     if (degrees < 0 or minutes < 0 or seconds < 0):
-        return -total
+        return total * -1
     return total
 
 def decimalToDegrees(decimal):
@@ -52,13 +53,22 @@ def degreesToHours(degrees, mins, secs):
     return total / 15
 
 def stellariumToPiRa(value):
-    conversion = value * (12.0/MAX_INT_VALUE)
+    conversion = value * (12.0/MAX_RA_VALUE)
     return hoursToDegrees(conversion)
 
 def piToStellariumRa(degrees, mins, secs):
     conversion = degreesToHours(degrees, mins, secs)
-    conversion = conversion*MAX_INT_VALUE
+    conversion = conversion*MAX_RA_VALUE
     return math.trunc(conversion/12)
+    
+def stellariumToPiDec(value):
+    conversion = value * (90.0/MAX_DEC_VALUE)
+    return decimalToDegrees(conversion)
+    
+def piToStellariumDec(degrees, mins, secs):
+    conversion = degreesToDecimal(degrees, mins, secs)
+    conversion = conversion*MAX_DEC_VALUE
+    return math.trunc(conversion/90)
 
 def convertTwosCompliment(self, val):
     if (val & (1<<(16 - 1)) != 0):
