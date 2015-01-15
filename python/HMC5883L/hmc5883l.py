@@ -87,17 +87,23 @@ class HMC5883L(object):
         self.declination = conversions.degreesToDecimal(degrees, minutes)
         self.SetConfiguration()
 
-    def SetConfiguration(self, gain=GAIN_1_3, sampleRate=SAMPLE_8, dataRate=OUTPUT_15, mode=MODE_NORMAL, operationMode=OP_CONTINUOUS):
+    def SetConfiguration(self, gain=GAIN_5_6, sampleRate=SAMPLE_8, dataRate=OUTPUT_15, mode=MODE_NORMAL, operationMode=OP_CONTINUOUS):
         configA = 0x0
         configA |= sampleRate<<self.SAMPLE_OFFSET
         configA |= dataRate<<self.OUTPUT_OFFSET
         configA |= mode<<self.MODE_OFFSET
+        print 'configA ', bin(configA)
         self.bus.write_byte_data(self.address, self.REGA, configA) 
+        result = self.bus.read_byte_data(self.address, self.REGA)
+        print 'config register a ', bin(result)
         self.SetGain(gain)
         self.SetMode(operationMode)
 
     def SetGain(self, gain=GAIN_1_3):
+        print 'gain', bin(gain<<self.GAIN_OFFSET)
         self.bus.write_byte_data(self.address, self.REGB, (gain<<self.GAIN_OFFSET))  
+        result = self.bus.read_byte_data(self.address, self.REGB)
+        print 'config register b ', bin(result)
         self.gain = self.GAIN[gain]
     
     def SetMode(self, mode=MODE_NORMAL):
@@ -111,16 +117,18 @@ class HMC5883L(object):
         twoX = self.ConvertTwosCompliment(rawX)
         twoY = self.ConvertTwosCompliment(rawY)
         twoZ = self.ConvertTwosCompliment(rawZ)
-        print 'rawX, rawY, rawZ', (rawX, rawY, rawZ)
-        print 'twoX, twoY, twoZ', (hex(self.ConvertTwosCompliment(rawX)), hex(self.ConvertTwosCompliment(rawY)), hex(self.ConvertTwosCompliment(rawZ)))
-        x = (twoX / self.GAUSS_LSB_XY * self.SENSORS_GAUSS_TO_MICROTESLA)
-        y = (twoY / self.GAUSS_LSB_XY * self.SENSORS_GAUSS_TO_MICROTESLA)
-        z = (twoZ / self.GAUSS_LSB_Z * self.SENSORS_GAUSS_TO_MICROTESLA)
-        #x = self.ConvertTwosCompliment((output[0] << 8 | output[1]))  
-        #y = self.ConvertTwosCompliment((output[4] << 8 | output[5])) * -1
-        #z = self.ConvertTwosCompliment((output[2] << 8 | output[3])) * -1
-        return (x, y, z)
-        #return (((output[0] << 8) | output[1]), ((output[4] << 8) | output[5]), ((output[2] << 8) | output[3]))
+        #print 'rawX, rawY, rawZ', (hex(rawX), hex(rawY), hex(rawZ))
+        #print 'twoX, twoY, twoZ', (twoX, twoY, twoZ)
+
+        return (twoX, twoY, twoZ)
+
+    def ObtainRaDec(self, x, y, z):
+        P = math.sqrt((math.pow(x,2) + math.pow(y,2)))
+        p = math.sqrt((math.pow(z,2) + math.pow(P,2)))
+        phi = math.acos(z/p)
+        print 'x, p, phi', (x,p,phi)
+        theta = math.acos(x/(p*math.sin(phi)))
+        return (theta, phi)
 
     def GetCoordinatesDecimal(self):
         (x, y, z) = self.GetHeading()
@@ -131,21 +139,18 @@ class HMC5883L(object):
         i=0
         while i<6:
             result = self.bus.read_byte_data(self.address, self.DOX+i)
-            # Give this a try...i have a feeling this is going to mess with the results, however
-            #if (result > 127):
-            #    print "Subtracting 256 from ", result
-            #    result = result - 256
-            #print "%d: %s" %(i, hex(result))
             output.append(result)
             i += 1
         return output
     
     def ConvertTwosCompliment(self, val):
-        if (val & (1<<(16 - 1)) != 0):
-            val = val - (1<<16)
-        if val == -4096: return val
-        return val
-        #return round(val * self.gain)
+        notVal = ~val
+        #print 'val, notVal', (val, notVal)
+        #print 'notVal+1', (notVal+1)
+        notVal+=1
+        if (val & 0x8000 != 0):
+            notVal = notVal & 0x0000FFFF
+        return notVal
 
     def HeadingCoords(self, x, y, isDec = False):
         headingRad = math.atan2(x, y)

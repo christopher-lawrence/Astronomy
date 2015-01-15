@@ -38,26 +38,41 @@ def hoursToDegrees(hours):
     secs = round((math.modf(mins)[0] * 60), 2)
     mins = math.trunc(mins)
     if (secs == 60.0):
-	mins += 1
-	secs = 0
+	    mins += 1
+	    secs = 0
     degrees = math.trunc(conversion) 
     if (mins == 60):
-	degrees += 1
-	mins = 0
+	    degrees += 1
+	    mins = 0
     return degrees, mins, secs    
 
-def degreesToHours(degrees, mins, secs):
+def degreesToDecimalHours(degrees, mins, secs):
     total = float(degrees)
     total += float(mins) / 60.0 
     total += float(secs) / 60.0 /60.0
     return total / 15
+
+def decimalDegreesToHMS(degrees):
+    (d, m, s) = decimalToDegrees(degrees)
+    decHours = degreesToDecimalHours(d, m, s)
+    hour = math.trunc(decHours)
+    mins = math.modf(decHours)[0] * 60
+    secs = round((math.modf(mins)[0] * 60), 2)
+    mins = math.trunc(mins)
+    if (secs == 60.0):
+        mins += 1
+        secs = 0
+    if (mins == 60):
+        degrees += 1
+        mins = 0
+    return hour, mins, secs
 
 def stellariumToPiRa(value):
     conversion = value * (12.0/MAX_RA_VALUE)
     return hoursToDegrees(conversion)
 
 def piToStellariumRa(degrees, mins, secs):
-    conversion = degreesToHours(degrees, mins, secs)
+    conversion = degreesToDecimalHours(degrees, mins, secs)
     conversion = conversion*MAX_RA_VALUE
     return math.trunc(conversion/12)
     
