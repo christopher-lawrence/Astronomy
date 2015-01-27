@@ -121,14 +121,22 @@ class HMC5883L(object):
         #print 'twoX, twoY, twoZ', (twoX, twoY, twoZ)
 
         return (twoX, twoY, twoZ)
+        #return (rawX, rawY, rawZ)
 
-    def ObtainRaDec(self, x, y, z):
-        P = math.sqrt((math.pow(x,2) + math.pow(y,2)))
-        p = math.sqrt((math.pow(z,2) + math.pow(P,2)))
-        phi = math.acos(z/p)
-        print 'x, p, phi', (x,p,phi)
-        theta = math.acos(x/(p*math.sin(phi)))
-        return (theta, phi)
+    def ObtainRa(self, x, y, z):
+        P = round(math.sqrt((math.pow(x,2) + math.pow(y,2))), 3)
+        if (y<0):
+            P *= -1
+        hyp = round(math.sqrt((math.pow(z,2) + math.pow(P,2))), 5)
+        if (P<0):
+            hyp *= -1
+        phi = math.acos(z/hyp) 
+        print 'P, hyp, phi', (P,hyp,phi)
+        theta = math.acos(x/P)
+        #theta = math.acos(x/(p*math.sin(phi)))
+        if (y<0 and y != 0):
+            theta += math.pi
+        return theta
 
     def GetCoordinatesDecimal(self):
         (x, y, z) = self.GetHeading()

@@ -5,8 +5,7 @@ if __name__ == '__main__':
     while True:
         (x,y,z) = compass.GetHeading()
         print 'x, y, z', (x, y, z)
-        (Ra, Dec) = compass.ObtainRaDec(x, y, z)
-        #print 'Ra: ', conversions.decimalDegreesToHMS(math.degrees(Ra))
-        print 'Ra: ', conversions.decimalToDegrees(math.degrees(Ra))
-        print 'Dec: ', conversions.decimalToDegrees(math.degrees(Dec))
+        Ra = compass.ObtainRa(x, y, z)
+        print 'Ra: ', conversions.decimalDegreesToHMS(math.degrees(Ra))
+        #print 'Ra: ', conversions.decimalToDegrees(math.degrees(Ra))
         time.sleep(0.5)
